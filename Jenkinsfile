@@ -31,7 +31,7 @@ pipeline {
                     reuseNode true
                 }
             }
-            
+
             steps {
                 sh '''
                     echo "Test started ..."
@@ -42,6 +42,12 @@ pipeline {
                     echo "Test successfully ended ..."
                 '''
             }
+        }                
+    }
+
+    post {
+        always {
+            junit 'test-results/junit.xml'
         }
     }
 }
