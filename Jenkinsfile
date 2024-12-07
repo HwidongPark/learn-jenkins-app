@@ -59,7 +59,7 @@ pipeline {
 
             steps {
                 sh '''
-                    npm install -g serve
+                    npm install serve
                     # serve -s build
                     node_modules/.bin/serve -s build
                     npx playwrite test
