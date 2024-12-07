@@ -48,15 +48,20 @@ pipeline {
         stage('E2E') {
             agent {
                 docker {
+                    // 
                     image 'mcr.microsoft.com/playwright:v1.49.0-noble'
                     reuseNode true
+                    // 방법 1) root 유저로 실행
+                    // serve -s build가 root 유저 아니면 실행 안되기 때문
+                    // args '-u root:root'
                 }
             }
 
             steps {
                 sh '''
                     npm install -g serve
-                    serve -s build
+                    # serve -s build
+                    node_modules\.bin\serve -s build
                     npx playwrite test
                 '''
             }
