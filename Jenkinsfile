@@ -93,13 +93,13 @@ pipeline {
                     image 'node:18-alpine'
                     reuseNode true
                 }
-                steps {
-                    sh '''
-                        npm install netify-cli
-                        node_modules/.bin/netify --version
-                    '''
-                }
             }
+            steps {
+                sh '''
+                    npm install netify-cli
+                    node_modules/.bin/netify --version
+                '''
+            }        
         }
     }
 }
